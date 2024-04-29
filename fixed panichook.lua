@@ -5,33 +5,17 @@ if isfile("menu_font.font") then
 end;
 
 -- Setup
-do
-    do -- Macros
-        if not LPH_OBFUSCATED then
-            LPH_JIT = function(...) 
-                return ...;
-            end;
-            LPH_JIT_MAX = function(...) 
-                return ...;
-            end;
-            LPH_NO_VIRTUALIZE = function(...) 
-                return ...;
-            end;
-            LPH_NO_UPVALUES = function(f) 
-                return(function(...) 
-                    return f(...);
-                end);
-            end;
-            LPH_ENCSTR = function(...) 
-                return ...; 
-            end;
-            LPH_ENCNUM = function(...) 
-                return ...; 
-            end;
-            LPH_CRASH = function() 
-                return print(Traceback());
-            end;
-            --
+if not LPH_OBFUSCATED and not LPH_JIT_ULTRA then
+	LPH_JIT_MAX = function(f) return f end
+	LPH_JIT_MAX = function(f) return f end
+	LPH_NO_VIRTUALIZE = function(f) return f end
+	LPH_NO_UPVALUES = function(f) return f end
+	LPH_JIT = function(f) return f end
+	LPH_ENCSTR = function(s) return s end
+	LPH_STRENC = function(s) return s end
+	LPH_CRASH = function() while true do end return end
+end
+
             LRM_LinkedDiscordID = "1041164903332974682";
             LRM_TotalExecutions = 0;
             LRM_SecondsLeft = 0;
