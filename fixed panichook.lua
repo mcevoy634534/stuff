@@ -1,3 +1,4 @@
+getfenv().LPH_NO_VIRTUALIZE = function(f) return f end;
 -- Fonts
 if isfile("menu_font.font") then
     delfile("menu_font.font");
